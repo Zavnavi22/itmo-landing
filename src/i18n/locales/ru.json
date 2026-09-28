@@ -8,5 +8,13 @@
     "year": "Магистратура 1-й курс",
     "program": "Программа 'Веб-технологии'",
     "bachelor": "Бакалавриат получал в университете УрФУ"
+  },
+  "lab1": {
+    "task": "Задание 1 - Docker-образ в GitHub Container Registry",
+    "result": "ghcr.io/zavnavi22/itmo-component-lab:564477"
+  },
+  "lab2": {
+    "task": "Задание 2 - Визуализация",
+    "download": "Скачать файл схемы в .drawio формате"
   }
 }
