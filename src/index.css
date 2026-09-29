@@ -3,3 +3,7 @@
 @theme {
   --font-mono: Consolas, "Liberation Mono", Menlo, monospace;
 }
+
+body {
+  background-color: #EDE6D5;
+}
