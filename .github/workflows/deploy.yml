@@ -1,0 +1,35 @@
+name: Deploy to Helios
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy via rsync with sshpass
+        uses: mai-space/action-sshpass-rsync@v1
+        with:
+          host: ${{ secrets.HELIOS_HOST }}
+          user: ${{ secrets.HELIOS_USER }}
+          port: ${{ secrets.HELIOS_PORT }}
+          pass: ${{ secrets.HELIOS_PASSWORD }}
+          local: "./dist/"
+          remote: "/home/studs/${{ secrets.HELIOS_USER }}/public_html/"
+          extra: "-avzr --delete"
