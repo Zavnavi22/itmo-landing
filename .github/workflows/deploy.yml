@@ -24,12 +24,12 @@ jobs:
         run: npm run build
 
       - name: Deploy via rsync with sshpass
-        uses: mai-space/action-sshpass-rsync@v1
+        uses: burnett01/rsync-deployments@v9
         with:
-          host: ${{ secrets.HELIOS_HOST }}
-          user: ${{ secrets.HELIOS_USER }}
-          port: ${{ secrets.HELIOS_PORT }}
-          pass: ${{ secrets.HELIOS_PASSWORD }}
-          local: "./dist/"
-          remote: "/home/studs/${{ secrets.HELIOS_USER }}/public_html/"
-          extra: "-avzr --delete"
+          switches: -avzr --delete
+          path: ./dist/
+          remote_path: /home/studs/${{ secrets.HELIOS_USER }}/public_html/
+          remote_host: ${{ secrets.HELIOS_HOST }}
+          remote_port: ${{ secrets.HELIOS_PORT }}
+          remote_user: ${{ secrets.HELIOS_USER }}
+          remote_key: ${{ secrets.HELIOS_PASSWORD }}
