@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Lab1 from './components/Lab1';
 import Lab2 from './components/Lab2';
 import ArticleAnalysis from './components/ArticleAnalysis';
+import Lab3 from './components/Lab3';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Lab2 />
           </div>
           <ArticleAnalysis />
+          <Lab3 />
         </div>
       </div>
     </>

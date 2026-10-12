@@ -39,7 +39,7 @@ function ArticleAnalysis() {
         <button
           onClick={prev}
           disabled={index === 0}
-          className='px-3 rounded-md border-2 border-yellow-950 bg-[#5c3a24] hover:bg-[#6b452b] disabled:opacity-40 disabled:cursor-not-allowed transition-colors'
+          className='px-3 rounded-md border-2 border-yellow-950 bg-[#5c3a24] hover:bg-[#6b452b] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300'
           aria-label={t('analysis.prev', 'Назад')}
         >
           ←
@@ -50,7 +50,7 @@ function ArticleAnalysis() {
         <button
           onClick={next}
           disabled={index === total - 1}
-          className='px-3 rounded-md border-2 border-yellow-950 bg-[#5c3a24] hover:bg-[#6b452b] disabled:opacity-40 disabled:cursor-not-allowed transition-colors'
+          className='px-3 rounded-md border-2 border-yellow-950 bg-[#5c3a24] hover:bg-[#6b452b] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300'
           aria-label={t('analysis.next', 'Вперёд')}
         >
           →

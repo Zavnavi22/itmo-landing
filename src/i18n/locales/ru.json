@@ -19,6 +19,10 @@
     "task": "Задание 2 - Визуализация",
     "download": "Скачать файл схемы в .drawio формате"
   },
+  "lab3": {
+    "task": "Задание 3 - Регулярные выражения",
+    "open": "Открыть лабораторную №3"
+  },
   "analysis": {
     "task": "Анализ статьи 'From Navigation to Intention: Reframing the Web Experience through Goal-Driven Interfaces'",
     "about": "О чем статья?",

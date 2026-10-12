@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Безопасная демонстрация ReDoS</title>
+  <link rel="stylesheet" href="./redos.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Безопасная демонстрация ReDoS</h1>
+    <p class="intro">Сравнение уязвимой и безопасной регулярки для проверки email</p>
+    <div class="monitor">
+      <div class="monitor-info">
+        <div class="monitor-label">Время работы страницы</div>
+        <div class="monitor-value">
+          <span id="uptimeCounter">0.0</span> сек
+        </div>
+      </div>
+      <div class="monitor-info">
+        <div class="monitor-label">Кадров (циклически до 2000)</div>
+        <div class="monitor-value">
+          <span id="tickCounter">0</span>
+        </div>
+      </div>
+      <div class="monitor-lag" id="lagDisplay" hidden>
+        <div class="monitor-label">Последний лаг</div>
+        <div class="monitor-value monitor-value--danger">
+          <span id="lagValue">0</span> мс
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h2 class="card-title card-title--danger">Уязвимая регулярка</h2>
+        <code class="card-code">/^([a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/</code>
+        <p class="card-desc">
+          Вложенный квантификатор
+          <code class="inline-code">([a-zA-Z0-9]+)*</code>
+          создает экспоненциальное число способов разбора.
+        </p>
+      </div>
+      <div class="card">
+        <h2 class="card-title card-title--safe">Безопасная регулярка</h2>
+        <code class="card-code">/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/</code>
+        <p class="card-desc">
+          Один квантификатор
+          <code class="inline-code">[a-zA-Z0-9]+</code>
+          — разбор однозначен, время линейно.
+        </p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="btnSafe" class="btn btn--safe">Запустить безопасный тест</button>
+      <button id="btnBad" class="btn btn--danger">Запустить уязвимый тест</button>
+      <button id="btnDangerous" class="btn btn--dangerous">Тест на главном потоке</button>
+    </div>
+
+    <div class="notice">
+      При запуске теста на главном потоке таймер и счетчик кадров должны стать заблокированы на несколько секунд, что является визуальной демонстрацией ReDoS.
+    </div>
+
+    <div class="lag-block" id="maxLagBlock" hidden>
+      <div class="lag-label">Максимальный зафиксированный лаг главного потока</div>
+      <div class="lag-value"><span id="maxLagValue">0</span> мс</div>
+      <div class="lag-desc">
+        На столько миллисекунд браузер зависал.
+      </div>
+    </div>
+
+    <div id="results"></div>
+  </div>
+  <script src="./redos.js"></script>
+</body>
+</html>
