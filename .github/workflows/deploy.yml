@@ -24,12 +24,13 @@ jobs:
         run: npm run build
 
       - name: Deploy via rsync with sshpass
-        uses: burnett01/rsync-deployments@v9
-        with:
-          switches: -avzr --delete
-          path: ./dist/
-          remote_path: /home/studs/${{ secrets.HELIOS_USER }}/public_html/
-          remote_host: ${{ secrets.HELIOS_HOST }}
-          remote_port: ${{ secrets.HELIOS_PORT }}
-          remote_user: ${{ secrets.HELIOS_USER }}
-          remote_key: ${{ secrets.HELIOS_PASSWORD }}
+        env:
+          HELIOS_USER: ${{ secrets.HELIOS_USER }}
+          HELIOS_HOST: ${{ secrets.HELIOS_HOST }}
+          HELIOS_PORT: ${{ secrets.HELIOS_PORT }}
+          HELIOS_PASSWORD: ${{ secrets.HELIOS_PASSWORD }}
+        run: |
+          sshpass -p "$HELIOS_PASSWORD" rsync -avz --delete \
+            -e "ssh -p $HELIOS_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            ./dist/ \
+            "$HELIOS_USER@$HELIOS_HOST:~/public_html/"
