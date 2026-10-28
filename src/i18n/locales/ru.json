@@ -17,11 +17,16 @@
   },
   "lab2": {
     "task": "Задание 2 - Визуализация",
-    "download": "Скачать файл схемы в .drawio формате"
+    "download": "Скачать файл схемы в .drawio формате",
+    "enlarge": "Увеличить изображение ⤢",
+    "schemaAlt": "Схема второй лабораторной работы",
+    "close": "Закрыть изображение",
+    "open": "Открыть схему в полном размере"
   },
   "lab3": {
     "task": "Задание 3 - Регулярные выражения",
-    "open": "Открыть лабораторную №3"
+    "open": "Открыть лабораторную №3",
+    "linkIcon": "Ссылка"
   },
   "analysis": {
     "task": "Анализ статьи 'From Navigation to Intention: Reframing the Web Experience through Goal-Driven Interfaces'",
